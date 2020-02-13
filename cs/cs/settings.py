@@ -37,8 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'rest_framework.authtoken'
 ]
+SITE_ID=1
 
+REST_FRAMEWORK={
+    'DEFAULT_PREMISSION_CLASSES':('rest_framework.permissions.isAuthenticated',),
+    'DEFAULT_ATHENTICATION_CLASSES':('rest_framework.authentication',),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE':100
+}
+CORS_ALLOW_METHODS={
+    'DELETE',
+    'GET',
+    'POST',
+    'PUT',
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -76,7 +91,7 @@ WSGI_APPLICATION = 'cs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': '',
+        'NAME': 'replica',
         'USER': 'postgres',
         'PASSWORD': 'password',
         'HOST': 'database-2.cipwr1lzf3kt.us-east-1.rds.amazonaws.com',
@@ -107,7 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
